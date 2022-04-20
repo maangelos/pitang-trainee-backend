@@ -1,0 +1,28 @@
+{
+  "name": "backend-agendamento-vacina",
+  "version": "1.0.0",
+  "description": "backend-agendamento-vacina api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maangelos/pitang-trainee-backend.git"
+  },
+  "keywords": [
+    "prisma",
+    "node",
+    "rest",
+    "express"
+  ],
+  "author": "marianna alves",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maangelos/pitang-trainee-backend/issues"
+  },
+  "homepage": "https://github.com/maangelos/pitang-trainee-backend#readme",
+  "dependencies": {
+    "yarn": "^1.22.18"
+  }
+}
