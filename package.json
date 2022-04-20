@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "backend-agendamento-vacina api",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,6 +24,13 @@
   },
   "homepage": "https://github.com/maangelos/pitang-trainee-backend#readme",
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "morgan": "^1.10.0",
     "yarn": "^1.22.18"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
