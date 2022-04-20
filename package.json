@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "backend-agendamento-vacina api",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -30,7 +31,6 @@
     "yarn": "^1.22.18"
   },
   "devDependencies": {
-    "eslint": "^8.13.0",
     "nodemon": "^2.0.15"
   }
 }
