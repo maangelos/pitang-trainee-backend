@@ -39,7 +39,7 @@ class Controller {
 			const newItem = await this.prismaEntity.create({data: body});
 			response.json({'message': `${this.entity.toUpperCase()} created`, newItem});
 		}catch(error){
-			console.erro(error.message);
+			console.error(error.message);
 			response.status(400).json({'message': `Fail to insert ${this.entity}`});
 		}
 	}
