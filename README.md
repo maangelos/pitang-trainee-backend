@@ -6,8 +6,8 @@ Repositório para o projeto final do programa Pitang Transforma 2022.
 
 * [Express](https://expressjs.com/pt-br/) - Framework
 * [Prisma](https://www.prisma.io/) - ORM
-* [MySql](https://www.mysql.com/) - Banco de Dados
-* [Yarn](https://www.mysql.com/) - Gerenciador de dependências
-* 
+* [MySql](https://www.mysql.com/) - Database
+* [Yarn](https://yarnpkg.com/) - Package Manager
+
 
 
