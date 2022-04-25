@@ -2,8 +2,10 @@ import prisma from '../prismaClient.js';
 
 class Controller {
 
-	constructor (entity) {
+	constructor (entity, validationSchema) {
 		this.entity = entity;
+		this.validationSchema = validationSchema;
+		this.prismaClient = prisma;
 		this.prismaEntity = prisma[entity];
 	}
 	
@@ -22,9 +24,24 @@ class Controller {
 	}
 	
 	async store(request,response) {
+
 		const {body} = request;
-		const newItem = await this.prismaEntity.create({data: body});
-		response.json({'message': `${this.entity.toUpperCase()} created`, newItem});
+
+		if (this.validationSchema){
+			const validation = this.validationSchema.validate(body, {abortEarly: false});
+			if(validation.error){
+				return response.status(400).json(validation.error.details);
+			}
+
+		}
+		
+		try{
+			const newItem = await this.prismaEntity.create({data: body});
+			response.json({'message': `${this.entity.toUpperCase()} created`, newItem});
+		}catch(error){
+			console.error(error.message);
+			response.status(400).json({'message': `Fail to insert ${this.entity}`});
+		}
 	}
 
 	async update (request,response) {
