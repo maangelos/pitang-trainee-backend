@@ -17,7 +17,15 @@ const schema = Joi.object({
 });
 class ScheadulingController extends Controller{
 	constructor() {
-		super('Schedualing', schema);
+		super({
+			entity: 'Schedualing', 
+			validationSchema: schema, 
+			prismaOptions: {
+				include: { 
+					patient: true
+				}
+			}
+		});
 	}
 
 	store(request,response){
@@ -25,6 +33,8 @@ class ScheadulingController extends Controller{
 		const patientId = request.body.patientId;
 
 		delete request.body.patientId;
+
+		this.prismaClient.schedualing.findMany({include: {patient: true}});
 
 		request.body = {
 			...request.body,

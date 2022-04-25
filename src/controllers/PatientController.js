@@ -8,7 +8,7 @@ const schema = Joi.object({
 
 class PatientController extends Controller{
 	constructor() {
-		super('patient', schema);
+		super({entity: 'patient', validationSchema: schema});
 	}
 }
 
