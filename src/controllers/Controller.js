@@ -2,15 +2,18 @@ import prisma from '../prismaClient.js';
 
 class Controller {
 
-	constructor (entity, validationSchema) {
+	constructor ({entity, validationSchema, prismaOptions}) {
 		this.entity = entity;
 		this.validationSchema = validationSchema;
+		this.prismaOptions = prismaOptions;
 		this.prismaClient = prisma;
 		this.prismaEntity = prisma[entity];
 	}
 	
 	async index (_request,response)  {
-		const items = await this.prismaEntity.findMany();
+		const items = await this.prismaEntity.findMany(
+			{include: this.prismaOptions?.include}
+		);
 		response.json({'items': items});
 	}
 	
@@ -36,7 +39,10 @@ class Controller {
 		}
 		
 		try{
-			const newItem = await this.prismaEntity.create({data: body});
+			const newItem = await this.prismaEntity.create({
+				include: this.prismaOptions?.include,
+				data: body
+			});
 			response.json({'message': `${this.entity.toUpperCase()} created`, newItem});
 		}catch(error){
 			console.error(error.message);
